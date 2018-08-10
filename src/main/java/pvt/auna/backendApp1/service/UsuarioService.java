@@ -9,5 +9,8 @@ public interface UsuarioService{
 	
 	void save(Usuario usuario);
 	List<Usuario> findAll();
+	void deleteUsuario(long id);
+	
+
 	
 }
