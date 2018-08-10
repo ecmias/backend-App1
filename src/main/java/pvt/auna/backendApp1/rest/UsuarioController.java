@@ -1,6 +1,7 @@
 package pvt.auna.backendApp1.rest;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pvt.auna.backendApp1.modelo.Usuario;
 import pvt.auna.backendApp1.service.UsuarioService;
+import pvt.auna.backendApp1.util.QueryResult;
 import pvt.auna.backendApp1.util.RestResponse;
 
 @RestController
@@ -36,9 +38,14 @@ public class UsuarioController {
 		usuarioService.save(usuario);
 		return new RestResponse(HttpStatus.OK.value(),"Operacion Existosa");
 	}
+	@RequestMapping(value = "/getUsuarios", method = RequestMethod.GET)
+	public List<Usuario> getUsuarios() {
+		return this.usuarioService.findAll();
+	}
 
 	private boolean validate(Usuario usuario) {
 		boolean isValid = true;
+		
 		if (usuario.getNombres() == null || usuario.getNombres().isEmpty()) {
 			isValid = false;
 		} else if (usuario.getApellidoPaterno() == null || usuario.getApellidoPaterno().isEmpty()) {

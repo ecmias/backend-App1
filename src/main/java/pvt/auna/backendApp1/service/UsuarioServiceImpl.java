@@ -2,6 +2,8 @@ package pvt.auna.backendApp1.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +21,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 		// TODO Auto-generated method stub
 		
 		this.usuarioRepository.save(usuario);
+	}
+
+	@Override
+	public List<Usuario> findAll() {
+		// TODO Auto-generated method stub
+		return this.usuarioRepository.findAll();
 	}
 
 	
